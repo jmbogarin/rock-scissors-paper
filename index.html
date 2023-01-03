@@ -5,56 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Scissors & Paper</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script >
-        const possibleAnswers = ['paper', 'scissors', 'rock'];
-        let playerScore = 0;
-        let computerScore = 0;
-
-        function getComputerChoice() { 
-            return possibleAnswers[Math.floor(Math.random()*3)];
-        }
-        
-        function playRound (playerSelection, computerSelection) {
-            const diff = possibleAnswers.indexOf(playerSelection) - possibleAnswers.indexOf(computerSelection)
-
-            if (diff === 0) {
-                return "It's a tie!"
-            } else if (diff === 1 || diff === -2) {
-                playerScore++;
-                return `You win! ${playerSelection} beats ${computerSelection}` 
-            } else {
-                computerScore++;
-                return `You lose! ${computerSelection} beats ${playerSelection}` 
-            }
-        }
-
-        function game() {
-            
-            for (let i = 0; i < 5; i++) {
-                const computerSelection = getComputerChoice();
-                const playerSelection = prompt("Enter your selection:").toLowerCase()
-
-                const gameResult = playRound(playerSelection, computerSelection)
-
-                console.log(gameResult)
-            }
-
-            if (playerScore > computerScore) {
-                console.log('Player wins!')
-            } else if (playerScore < computerScore) {
-                console.log('Computer wins!')
-            } else {
-                console.log("It's a tie!")
-            }
-        }
-
-        game();
-        
-
-
-    </script>
+    <h1>Rock, Scissors & Paper</h1>
+    <div class="container">
+        <img src="img/rock.png" id="rock">
+        <img src="img/scissors.png" id="scissors">
+        <img src="img/paper.png" id="paper">
+    </div>
+    <div class="display">Selecciona una opción</div>
+    <div class="scores">
+        <div class="score">
+            <span>Player</span>
+            <span id="player-score">0</span>
+        </div>
+        <div class="score">
+            <span>Computer</span>
+            <span id="computer-score">0</span>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-box">
+            <div class="modal-result">Title</div>
+            <button class="new-game-button">Play again</button>
+        </div> 
+    </div>
 </body>
 </html>
 
